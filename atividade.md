@@ -20,12 +20,12 @@ Após uma breve contextualização, aqui segue minha atividade sobre o modelo re
 <sup>Fonte: Produzido por David Deodato(2024)</sup>
 </div>
 
-**Link para o modelo lógico em my: https://sql.toad.cz**
+**Link para o modelo lógico: https://sql.toad.cz**
 
 
 Para acessar o arquivo, clique em "SAVE/LOAD", vá em "LOAD" e pesquise "david123"
 
-
+**OBS:** A contextualização está logo após o código XML
 
 Código XML, como pedido na atividade: 
 

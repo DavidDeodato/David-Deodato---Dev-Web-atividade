@@ -289,3 +289,102 @@ Código XML, como pedido na atividade:
 **Formulário**: Armazena informações sobre os formulários de feedback preenchidos pelos usuários. Cada formulário tem um ID único, título, usuário avaliado e feedback.
 
 **Questões**: Armazena informações sobre as questões que podem ser feitas aos usuários. Cada questão tem um ID único.
+
+
+**Código em formato SQl, como pedido: 
+
+```
+
+-- Database table definitions
+
+CREATE TABLE Tarefas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) DEFAULT NULL,  -- Assuming title can have text
+  descricao VARCHAR(255) DEFAULT NULL,  -- Assuming description can have text
+  status INT DEFAULT NULL,
+  autor INT DEFAULT NULL,
+  data_criacao DATE DEFAULT NULL,
+  id_Usuarios INT DEFAULT NULL,
+  FOREIGN KEY (id_Usuarios) REFERENCES Usuarios(id)
+);
+
+CREATE TABLE colunas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  lista_tarefas INT DEFAULT NULL,
+  fazendo INT DEFAULT NULL,
+  feito INT DEFAULT NULL,
+  new_field INT DEFAULT NULL,
+  id_Tarefas INT DEFAULT NULL,
+  FOREIGN KEY (id_Tarefas) REFERENCES Tarefas(id)
+);
+
+CREATE TABLE Notificações (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data DATE DEFAULT NULL,
+  titulo VARCHAR(255) DEFAULT NULL,
+  new_field INT DEFAULT NULL,
+  id_Tarefas INT DEFAULT NULL,
+  FOREIGN KEY (id_Tarefas) REFERENCES Tarefas(id)
+);
+
+CREATE TABLE Usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) DEFAULT NULL,
+  País VARCHAR(255) DEFAULT NULL,  -- Assuming country name can have text
+  bio VARCHAR(255) DEFAULT NULL,  -- Assuming bio can have text
+  foto VARCHAR(255) DEFAULT NULL,  -- Assuming photo path can have text
+  id_Tags INT DEFAULT NULL,
+  FOREIGN KEY (id_Tags) REFERENCES Tags(id),
+  id_Time INT DEFAULT NULL,
+  FOREIGN KEY (id_Time) REFERENCES Time(id),
+  id_Logins INT DEFAULT NULL,
+  FOREIGN KEY (id_Logins) REFERENCES Logins(id)
+);
+
+CREATE TABLE Formulario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) DEFAULT NULL,
+  usuario_avaliado INT DEFAULT NULL,
+  feedback VARCHAR(255) DEFAULT NULL,  -- Assuming feedback can have text
+  id_Usuarios INT DEFAULT NULL,
+  FOREIGN KEY (id_Usuarios) REFERENCES Usuarios(id),
+  id_Questoes INT DEFAULT NULL,
+  FOREIGN KEY (id_Questoes) REFERENCES Questoes(id)
+);
+
+CREATE TABLE Questoes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  questoes VARCHAR(255) DEFAULT NULL  -- Assuming questions can have text
+);
+
+CREATE TABLE Tags (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  interesses VARCHAR(255) DEFAULT NULL,  -- Assuming interests can have text
+  personalidade VARCHAR(255) DEFAULT NULL  -- Assuming personality can have text
+);
+
+CREATE TABLE Time (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  país VARCHAR(255) DEFAULT NULL,  -- Assuming country name can have text
+  nome_time VARCHAR(255) DEFAULT NULL  -- Assuming team name can have text
+);
+
+CREATE TABLE Reportes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) DEFAULT NULL,
+  data_criacao DATE DEFAULT NULL,
+  descricao VARCHAR(255) DEFAULT NULL,  -- Assuming description can have text
+  tempo INT DEFAULT NULL,
+  id_Usuarios INT DEFAULT NULL,
+  FOREIGN KEY (id_Usuarios) REFERENCES Usuarios(id)
+);
+
+CREATE TABLE Logins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  emails VARCHAR(255) DEFAULT NULL,  -- Assuming emails are text
+  senhas VARCHAR(255) DEFAULT NULL  -- Assuming passwords are text (not recommended for actual storage)
+);
+
+-- Adjust data types (e.g., VARCHAR length) based on actual data content
+
+```

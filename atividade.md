@@ -291,7 +291,7 @@ Código XML, como pedido na atividade:
 **Questões**: Armazena informações sobre as questões que podem ser feitas aos usuários. Cada questão tem um ID único.
 
 
-**Código em formato SQl, como pedido: 
+**Código em formato SQl, como pedido**: 
 
 ```
 
